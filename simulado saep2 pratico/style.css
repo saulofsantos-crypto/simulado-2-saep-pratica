@@ -1,0 +1,267 @@
+/* cores armazenadas em variavel root para o hidden do html esconder os elementos necessários */
+:root{--cinza:#333333;--branco:#FFFFFF;--roxo:#483DAD;--vermelho:#FF0000}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* Corpo da página com fundo branco. Caso retirado, o aside irá utilizar todo o espaço da página */
+body{font-family:'Inter',sans-serif;
+     display:grid;
+     grid-template-columns:260px /*Tamanho da barra lateral*/ 1fr /*espaço ocupado pelo resto da página*/;
+     min-height:100vh;
+     background:var(--branco);
+     color:var(--preto)}
+
+[hidden]{display:none !important} /*esconde todos os elementos que possuem hidden no html, possui prioridade máxima sobre qualquer outra instrução*/
+
+button{font-family:inherit; /*estilo do botão (fonte e cursor)*/
+       cursor:pointer}
+
+button:disabled{opacity:.4; /*estilo do botão quando ele está desativado*/
+                cursor:not-allowed} 
+
+.painel{background:var(--cinza); /*estilo do painel que cobre fundo branco e demais regras de estilização*/
+        color:var(--branco);
+        position:sticky; /*posição que acompanha a fluxo da página até determinado limite, quando se comporta como fixo*/
+        top:0;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        padding:20px;
+        gap:20px}
+
+.marca{display:flex;
+       align-items:center;
+       gap:12px}
+
+
+.marca h1{font-size:15px;
+    line-height:1.3}
+    
+    .marca h1 span{display:block;
+        font-weight:400;
+        font-size:12px}
+
+.perfil{text-align:center}
+
+.perfil img{width:72px;
+    height:72px;
+    border-radius:50%;
+    border:2px solid var(--branco);  /* estilos do container de perfil */ 
+    margin-bottom:8px}
+
+.perfil p{font-size:12px}  
+
+
+.indicadores div{margin-bottom:12px}    /* Indicadores são contadores gerais da planta: Horas acumuladas e total de apontamentos*/
+
+.indicadores dt{font-size:12px}
+
+.indicadores dd{font-size:24px;font-weight:700}
+
+.btn-registros{width:100%;  /*botao de registros desativado*/
+               padding:12px;
+               background:transparent;
+               color:var(--branco);
+               border:0;
+               border-top:1px solid var(--branco);
+               border-bottom:1px solid var(--branco);
+               text-align:center;
+               font-weight:600}
+
+.btn-registros.ativo{background:var(--roxo)}
+
+.rodape{margin-top:auto;
+        background:var(--cinza);
+        text-align:center;
+        font-size:12px;
+        display:grid;
+        gap:8px}
+
+.redes{display:flex; /*caixas que agrupam os icones das redes sociais*/
+      justify-content:center;
+      gap:12px}
+
+.redes img{width:22px;
+           height:22px;
+           filter:invert(1)} /*icones das redes sociais*/
+
+.conteudo{padding:20px 32px;   /*estilização do conteudo principal da pagina (tag main)*/
+          display:flex;
+          flex-direction:column;
+          gap:20px;
+          min-width:0}
+
+.topo{display:flex;           /*estilização do cabeçalho da página*/
+      justify-content:flex-end}
+
+.btn-login{background:var(--branco);
+    color:var(--cinza);
+    border:1px solid var(--cinza);
+    padding:8px 20px;
+    border-radius:6px;
+    font-weight:600}
+
+.btn-login.logout{background:var(--cinza);
+    color:var(--branco)}
+
+.filtros{align-self:center; /*filtros são os botões de manutenção, inspeção e operação*/
+    background:var(--cinza);
+    display:flex;
+    gap:8px;
+    padding:10px 16px;
+    border-radius:8px}
+
+.filtros button{background:transparent;
+                color:var(--branco);
+                border:1px solid var(--branco);
+                padding:6px 16px;
+                border-radius:6px}
+
+.filtros button.ativo{background:var(--roxo);
+                      border-color:var(--roxo)}
+
+.feed{display:grid;
+      gap:16px}
+
+.card{border:1px solid var(--cinza); /* card é o container que armazena cada manunteção, cada operação e cada inspeção */ 
+      border-radius:8px;
+      padding:16px;
+      display:grid;
+      gap:10px}
+
+.card h3{text-align:center}
+
+.operador{display:flex;     /* nome de quem realizou a ação*/ 
+          align-items:center;
+          gap:10px;
+          font-weight:600}
+
+.operador img{width:36px;
+              height:36px;
+              border-radius:50%}
+
+.dados{display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:14px}
+
+.acoes{display:flex;
+    justify-content:flex-end;
+    gap:16px}
+
+.acoes button{background:none;
+    border:0;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:14px}
+
+.acoes img{width:22px;
+        height:22px}
+
+.acoes .like.ativo img{filter:invert(14%) sepia(96%) saturate(7471%) hue-rotate(2deg) brightness(100%) contrast(113%)}
+
+.comentarios{border-top:1px solid var(--cinza);
+    padding-top:10px;
+    display:grid;
+    gap:8px}
+
+.comentarios ul{list-style:none;
+    display:grid;
+    gap:4px;
+    font-size:14px}
+
+.novo-coment{display:flex;
+            gap:8px}
+
+.novo-coment input{flex:1}
+
+.novo-coment button{background:var(--cinza);
+                    border:0;
+                    border-radius:6px;
+                    padding:0 12px}
+
+.novo-coment img{width:18px;
+                filter:invert(1)}
+
+input,select{padding:10px;
+    border:1px solid var(--cinza);
+    border-radius:6px;
+    font-family:inherit;
+    font-size:14px;
+    width:100%}
+
+.invalido{border:2px solid var(--vermelho)!important}
+
+.erro{color:var(--vermelho);
+    font-size:12px;
+    min-height:14px;
+    display:block}
+
+.paginacao{display:flex;
+    justify-content:center;
+    flex-wrap:wrap;gap:6px}
+
+.paginacao button{background:var(--cinza);
+    color:var(--branco);
+    border:0;
+    padding:8px 12px;
+    border-radius:6px}
+
+.paginacao button.ativo{background:var(--roxo)}
+
+.form-registro{max-width:480px;
+    width:100%;
+    margin:0 auto}
+
+.form-registro h2{text-align:center;
+    margin-bottom:16px}
+
+label{display:block;
+    font-weight:600;
+    font-size:14px;
+    margin:10px 0 4px}
+
+.btn-escuro{background:var(--cinza);
+    color:var(--branco);
+    border:0;
+    padding:10px 20px;
+    border-radius:6px;
+    font-weight:600;
+    margin-top:12px}
+
+.overlay{position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:grid;
+    place-items:center;
+    z-index:10}
+
+.modal{background:var(--branco);
+    padding:28px;
+    border-radius:10px;
+    width:min(380px,92vw);
+    position:relative}
+
+.modal-x{position:absolute;
+    top:10px;
+    right:10px;
+    background:none;
+    border:0}
+
+.modal-x img{width:18px}
+
+.modal-acoes{display:flex;
+    gap:10px;
+    justify-content:flex-end}
+
+.btn-cancelar{background:transparent;
+    border:1px solid var(--cinza);
+    color:var(--cinza);
+    padding:10px 20px;
+    border-radius:6px;
+    margin-top:12px}
+
+@media(max-width:700px){body{grid-template-columns:1fr}
+.painel{position:static;height:auto}
+.rodape{margin-top:0}}

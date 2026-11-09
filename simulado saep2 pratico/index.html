@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Integrado de Apontamentos Operacionais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Barra Lateral do site guarda a logo, o perfil, os indicadores, o botão Registros e o rodapé.-->
+  <aside class="painel">
+      <div class="marca">
+        <!-- Logo + descrição breve -->
+        <img src="assets/logo-empresa.png" alt="Logo da empresa" width="56" height="56">
+        <h1>Painel Integrado<span>Apontamentos Operacionais</span></h1>
+      </div>
+        <!-- Foto de perfil para quando a autenticação é realizada -->
+      <div id="perfil" class="perfil" hidden>
+        <img id="perfil-foto" alt="Foto do operador logado">
+        <strong id="perfil-nome"></strong>
+        <p><span id="perfil-qtd">0</span> apontamentos · <span id="perfil-horas">0</span> h</p>
+      </div>
+
+      <dl class="indicadores">
+          <!-- Contadores gerais da planta: Horas acumuladas e total de apontamentos -->
+
+        <div><dt>Total de apontamentos</dt><dd id="ind-total">0</dd></div>
+        <div><dt>Horas operacionais acumuladas</dt><dd id="ind-horas">0 h</dd></div>
+      </dl>
+
+      <nav>
+        <!-- botão de registros  -->
+        <button id="btn-registros" class="btn-registros" disabled>Registros</button>
+      </nav>
+
+      <footer class="rodape">
+        <!-- rodapé da barra lateral -->
+        <p>Painel Integrado de Apontamentos</p>
+        <div class="redes">
+          
+          
+          
+          <img src="assets/instagram.svg" alt="Instagram"> <!-- logo instagram -->
+          <img src="assets/twitter.svg" alt="Twitter"> <!-- logo twitter -->
+          <img src="assets/linkedin.svg" alt="LinkedIn"> <!-- logo linkedin -->
+        </div>
+        <small>Copyright-2026</small>
+      </footer>
+  </aside>
+
+  <main class="conteudo">
+    <!-- Conteudo principal da pagina guarda o botão de login, a barra de filtros, o feed, a paginação e o formulário para criar seu registro-->
+
+    <header class="topo"><button id="btn-auth" class="btn-login">Login</button></header>  <!-- cabeçalho da parte principal-->
+   
+    <!--   botoes de manutencao, operacao e inspecao (filtro) -->
+    <div id="filtros" class="filtros">
+      <button data-filtro="manutenção">manutenção</button>
+      <button data-filtro="operação">operação</button>
+      <button data-filtro="inspeção">inspeção</button>
+    </div>
+
+    <!-- Manter todo o conteudo principal e os dados da barra lateral -->
+    <section id="feed" class="feed" aria-live="polite"></section>
+    <nav id="paginacao" class="paginacao" aria-label="Paginação"></nav>
+
+    <!-- Seção escondida para criar registro -->
+    <section id="form-registro" class="form-registro" hidden>
+      <h2>Crie seu registro</h2>
+      <form id="form-novo" novalidate>
+        <label for="tipo">Tipo de Apontamento</label>
+        <select id="tipo">
+          
+          <!-- formulario suspenso para escolha do tipo de apontamento -->
+          <option value="" disabled selected>Selecione o tipo</option>
+          <option value="manutenção">manutenção</option>
+          <option value="operação">operação</option>
+          <option value="inspeção">inspeção</option>
+        </select>
+
+        <small class="erro" data-erro="tipo"></small>
+        <!-- Respectivamente os campos de Deslocamento, Tempo de execução e o botão criar registro -->
+        <label for="distancia">Deslocamento/Área (metros)</label>
+        <input type="number" id="distancia" min="0" placeholder="Ex.: 3500">
+        <small class="erro" data-erro="distancia"></small>
+        <label for="tempo">Tempo de Execução (minutos)</label>
+        <input type="number" id="tempo" min="0" placeholder="Ex.: 90">
+        <small class="erro" data-erro="tempo"></small>
+        <button type="submit" class="btn-escuro">Criar Registro</button>
+      </form>
+    </section>
+  </main>
+
+
+  <!-- Tela de login para quando o usuario tenta realizar qualquer ação  -->
+  <div id="modal" class="overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <button id="modal-x" class="modal-x" aria-label="Fechar"><img src="assets/x.svg" alt="Fechar"></button>
+      <h2 id="modal-titulo">Login</h2>
+      <form id="form-login" novalidate>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Sua senha">
+        <small id="erro-login" class="erro"></small>
+        <div class="modal-acoes">
+          <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn-escuro">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
